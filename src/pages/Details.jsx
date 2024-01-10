@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { searchByCountry } from "../config";
-import Button from "../components/Details/button";
+import Button from "../components/Details/Button.jsx";
 import CountryInfo from "../components/Details/CountryInfo";
 
 const Details = () => {
