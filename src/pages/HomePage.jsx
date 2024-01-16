@@ -2,10 +2,8 @@
 import { useEffect, useState } from "react";
 import FiltersBox from "../components/Filters/FiltersBox";
 import ListByCountry from "../components/ListByCountry/ListByCountry";
-import axios from "axios";
-import { ALL_COUNTRIES } from "../config";
 
-const HomePage = ({ countries, setCountries }) => {
+const HomePage = ({ countries }) => {
   const [filtredCountries, setFilteredCountries] = useState(countries);
 
   const handleSearch = (search, region) => {
@@ -23,12 +21,6 @@ const HomePage = ({ countries, setCountries }) => {
 
     setFilteredCountries(data);
   };
-
-  useEffect(() => {
-    if (!countries.length)
-      axios.get(ALL_COUNTRIES).then(({ data }) => setCountries(data));
-    // eslint-disable-next-line
-  }, []);
 
   useEffect(() => {
     handleSearch();
