@@ -8,7 +8,7 @@ import NotFound from "./pages/NotFound";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCountries } from "./redux/operation";
-import { fetchAll } from "./redux/Selectors";
+import { fetchAll } from "./redux/selectors";
 
 function App() {
   const countriesData = useSelector(fetchAll);
