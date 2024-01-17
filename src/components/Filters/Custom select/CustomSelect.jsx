@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { CustomSelectEl } from "./CustomSelectStyled";
-import { onSelect } from "../../../redux/CountrySlice";
-import { selectFilters } from "../../../redux/Selectors";
+import { onSelect } from "../../../redux/countrySlice";
+import { selectFilters } from "../../../redux/selectors";
 
 const options = [
   { value: "Africa", label: "Africa" },

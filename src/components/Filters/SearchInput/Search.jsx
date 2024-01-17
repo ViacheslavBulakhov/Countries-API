@@ -1,6 +1,6 @@
 import { IoSearch } from "react-icons/io5";
 import { SearchInput, SearchInputWrap } from "./SerachStyled";
-import { onSearch } from "../../../redux/CountrySlice";
+import { onSearch } from "../../../redux/countrySlice";
 import { useDispatch } from "react-redux";
 
 const Search = () => {

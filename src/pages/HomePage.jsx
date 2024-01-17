@@ -2,7 +2,7 @@
 import FiltersBox from "../components/Filters/FiltersBox";
 import ListByCountry from "../components/ListByCountry/ListByCountry";
 import { useSelector } from "react-redux";
-import { selectFilters } from "../redux/Selectors";
+import { selectFilters } from "../redux/selectors.js";
 
 const HomePage = ({ countries }) => {
   const filters = useSelector(selectFilters);
