@@ -1,11 +1,15 @@
 import { IoSearch } from "react-icons/io5";
 import { SearchInput, SearchInputWrap } from "./SerachStyled";
+import { onSearch } from "../../../redux/CountrySlice";
+import { useDispatch } from "react-redux";
 
-const Search = ({ search, setSearch }) => {
+const Search = () => {
+  const dispatch = useDispatch();
+
   return (
     <SearchInputWrap>
       <IoSearch />
-      <SearchInput onChange={(e) => setSearch(e.target.value)} value={search} />
+      <SearchInput onChange={(e) => dispatch(onSearch(e.target.value))} />
     </SearchInputWrap>
   );
 };

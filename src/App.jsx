@@ -11,21 +11,20 @@ import { fetchCountries } from "./redux/operation";
 import { fetchAll } from "./redux/Selectors";
 
 function App() {
-  const storeRedux = useSelector(fetchAll);
+  const countriesData = useSelector(fetchAll);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchCountries());
   }, [dispatch]);
-  console.log("first");
 
   return (
     <>
       <Header />
       <Main>
         <Routes>
-          <Route index element={<HomePage countries={storeRedux} />} />
+          <Route index element={<HomePage countries={countriesData} />} />
           <Route path="country/:name" element={<Details />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -1,19 +1,5 @@
 import styled from "styled-components";
 import Select from "react-select";
-// const dot = (color = "transparent") => ({
-//   alignItems: "center",
-//   display: "flex",
-
-//   ":before": {
-//     backgroundColor: color,
-//     borderRadius: 10,
-//     content: '" "',
-//     display: "block",
-//     marginRight: 8,
-//     height: 10,
-//     width: 10,
-//   },
-// });
 
 export const CustomSelectEl = styled(Select).attrs({
   styles: {

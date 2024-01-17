@@ -9,6 +9,9 @@ export const SearchInput = styled.input.attrs({
   outline: none;
   background-color: var(--colors-ui-base);
   color: var(--color-text);
+  ::-webkit-search-clear-button {
+    cursor: pointer;
+  }
 `;
 
 export const SearchInputWrap = styled.label`

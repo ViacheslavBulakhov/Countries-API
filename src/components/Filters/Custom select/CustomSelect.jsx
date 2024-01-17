@@ -1,4 +1,7 @@
+import { useDispatch, useSelector } from "react-redux";
 import { CustomSelectEl } from "./CustomSelectStyled";
+import { onSelect } from "../../../redux/CountrySlice";
+import { selectFilters } from "../../../redux/Selectors";
 
 const options = [
   { value: "Africa", label: "Africa" },
@@ -8,15 +11,22 @@ const options = [
   { value: "Oceania", label: "Oceania" },
 ];
 
-const CustomSelect = ({ region, setRegion }) => {
+const CustomSelect = () => {
+  const filters = useSelector(selectFilters);
+  const dispatch = useDispatch();
+
+  const onChangeSelect = (e) => {
+    dispatch(onSelect(e));
+  };
+
   return (
     <CustomSelectEl
       options={options}
       placeholder="Filter by Region"
       isClearable
       isSearchable={false}
-      value={region}
-      onChange={setRegion}
+      value={filters.select}
+      onChange={onChangeSelect}
     />
   );
 };

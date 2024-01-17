@@ -3,12 +3,22 @@ import { fetchCountries } from "./operation";
 
 const initialState = {
   items: [],
+  filters: {
+    select: null,
+    search: "",
+  },
 };
 
 export const counterSlice = createSlice({
   name: "countries",
   initialState,
   reducers: {
+    onSearch(state, { payload }) {
+      return { ...state, filters: { ...state.filters, search: payload } };
+    },
+    onSelect(state, { payload }) {
+      return { ...state, filters: { ...state.filters, select: payload } };
+    },
   },
   extraReducers: (builder) => {
     //fetchAll
@@ -18,6 +28,6 @@ export const counterSlice = createSlice({
   },
 });
 
-// export const { increment, decrement, incrementByAmount } = counterSlice.actions;
+export const { onSearch, onSelect } = counterSlice.actions;
 
 export const counterSliceReducer = counterSlice.reducer;
