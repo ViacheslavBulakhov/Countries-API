@@ -7,6 +7,15 @@ import Details from "./pages/Details";
 import NotFound from "./pages/NotFound";
 import { useState } from "react";
 
+import { useStore } from "./zustand/store";
+import { useShallow } from "zustand/react/shallow";
+
+export function BearCounter() {
+  const bears = useStore(useShallow((state) => state.bears));
+  console.log("render");
+  return <h1>{bears} around here...</h1>;
+}
+
 function App() {
   const [countries, setCountries] = useState([]);
 

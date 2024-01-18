@@ -4,9 +4,18 @@ import FiltersBox from "../components/Filters/FiltersBox";
 import ListByCountry from "../components/ListByCountry/ListByCountry";
 import axios from "axios";
 import { ALL_COUNTRIES } from "../config";
+import { useStore } from "../zustand/store";
 
 const HomePage = ({ countries, setCountries }) => {
   const [filtredCountries, setFilteredCountries] = useState(countries);
+  const getCountries = useStore((state) => state.setCountries);
+  const data = useStore((state) => state.countries);
+
+  useEffect(() => {
+    if (!data.length)
+      axios.get(ALL_COUNTRIES).then(({ data }) => getCountries(data));
+    // eslint-disable-next-line
+  }, []);
 
   const handleSearch = (search, region) => {
     let data = [...countries];
@@ -24,21 +33,21 @@ const HomePage = ({ countries, setCountries }) => {
     setFilteredCountries(data);
   };
 
-  useEffect(() => {
-    if (!countries.length)
-      axios.get(ALL_COUNTRIES).then(({ data }) => setCountries(data));
-    // eslint-disable-next-line
-  }, []);
+  // useEffect(() => {
+  //   if (!countries.length)
+  //     axios.get(ALL_COUNTRIES).then(({ data }) => setCountries(data));
+  //   // eslint-disable-next-line
+  // }, []);
 
-  useEffect(() => {
-    handleSearch();
-    // eslint-disable-next-line
-  }, [countries]);
+  // useEffect(() => {
+  //   handleSearch();
+  //   // eslint-disable-next-line
+  // }, [countries]);
 
   return (
     <>
       <FiltersBox handleSearch={handleSearch} />
-      <ListByCountry data={filtredCountries} />
+      <ListByCountry data={data} />
     </>
   );
 };
