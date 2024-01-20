@@ -1,3 +1,4 @@
+import { useStore } from "../../../zustand/store";
 import { CustomSelectEl } from "./CustomSelectStyled";
 
 const options = [
@@ -8,7 +9,10 @@ const options = [
   { value: "Oceania", label: "Oceania" },
 ];
 
-const CustomSelect = ({ region, setRegion }) => {
+const CustomSelect = () => {
+  const region = useStore((state) => state.filters.region);
+  const setRegionFilter = useStore((state) => state.setRegionFilter);
+
   return (
     <CustomSelectEl
       options={options}
@@ -16,7 +20,7 @@ const CustomSelect = ({ region, setRegion }) => {
       isClearable
       isSearchable={false}
       value={region}
-      onChange={setRegion}
+      onChange={setRegionFilter}
     />
   );
 };

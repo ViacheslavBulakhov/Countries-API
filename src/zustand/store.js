@@ -6,13 +6,29 @@ import { devtools } from "zustand/middleware";
 export const useStore = create(
   devtools((set) => ({
     countries: [],
-    setCountries: (data) =>
+    filters: {
+      search: "",
+      region: null,
+    },
+
+    setCountries: async () => {
+      const { data } = await axios.get(ALL_COUNTRIES);
       set((state) => ({
         ...state,
         countries: [...data],
+      }));
+    },
+
+    setSearchFilter: (value) =>
+      set((state) => ({
+        ...state,
+        filters: { ...state.filters, search: value },
       })),
-    increasePopulation: () =>
-      set((state) => ({ bears: state.bears + 1 }), true),
-    removeAllBears: () => set({ bears: 0 }),
+
+    setRegionFilter: (value) =>
+      set((state) => ({
+        ...state,
+        filters: { ...state.filters, region: value },
+      })),
   }))
 );
